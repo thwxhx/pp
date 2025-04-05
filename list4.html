@@ -1,0 +1,377 @@
+
+<!DOCTYPE html><html>
+
+
+
+<head>
+ 
+ 
+  
+  <title>@thwhhaaa</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.6/shaka-player.ui.min.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.6/controls.min.css" crossorigin="anonymous">
+  
+
+
+</head><body bgcolor='black' style='margin:0' oncontextmenu='return false' onkeydown='return false' onmousedown='return false'>
+    <style>
+    
+.shaka-spinner-container { display: none; }
+  .video-fill video {
+        object-fit: fill cover;
+      }
+  
+   /* Overflow menu style */
+
+.shaka-overflow-menu {
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+}
+
+.shaka-overflow-menu button:hover {
+    background-color: rgb(45, 45, 45);
+}
+
+.shaka-overflow-button-label {
+    color: rgb(245, 245, 245);
+}
+
+.shaka-current-selection-span {
+    color: rgb(202, 202, 202);
+}
+
+.material-icons-round {
+    color: rgb(230, 230, 230);
+}
+
+/* Overflow sub menu style */
+
+.shaka-settings-menu {
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+}
+
+.shaka-settings-menu button {
+    color: rgb(255, 255, 255);
+}
+
+.shaka-settings-menu button:hover {
+    background-color: rgb(45, 45, 45);
+
+}
+
+.shaka-bottom-controls {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+
+
+#tglogo {
+position: absolute;
+right: 80px;
+top: 30px;
+height: 60px;
+width: 100px;
+} 
+</style>
+<script language=javascript>
+function dF(s){
+    var s1=unescape(s.substr(0,s.length-1)); 
+    var t='';
+    for(i=0;i<s1.length;i++)t+=String.fromCharCode(s1.charCodeAt(i)-s.substr(s.length-1,1));
+    document.write(unescape(t));
+}
+</script>
+
+<script>
+function bind(){
+    document.body.oncopy = function(e){
+        e.preventDefault();
+    }
+}
+bind();
+
+function contextmenu(){
+    return false;
+}
+document.code.contextmenu = contextmenu;
+</script>
+
+<script disable.devtool.auto src="https://cdn.jsdelivr.net/npm/disable.devtool"></script>
+
+<div class="container video.fill" data-shaka-player-container style="position:absolute;z-index:-1;top:0;left:0;width:100%;height:100%;object-fit:cover"></div>
+<video autoplay data-shaka-player id="video" poster="https://i.postimg.cc/qB5Zrtrf/vivosports-poster.png" style="width:100%;height:100%"></video>
+
+<script async>
+    // Function to get the value of a query parameter by name
+    function getQueryParameter(name){
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Define multiple manifest URIs and DRM configurations
+    const videoConfigs = {
+        "HYS.1": {
+            manifestUri: "https://cdn.vm.hdq.12/vos471/videoContentLiveEvent_:e865dbb.fbb4.:4e9.29c:.ggfc9e83b25e0EBTI0master/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "f415:fd1ccg12d8gg4:bc3dd6e25bfg8": "b3:53672385f3:gd:34:924:583df474"
+                }
+            }
+        },
+        "BASTRO": {
+            manifestUri: "https://linearjitp.playback.astro.com/my-dash.wv/linear0519/default`ott/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "2b76629:bc6d5:fc346419d3c2b:f821": "4d5619bg459955218g6f137b5ge7c27f"
+                }
+            }
+        },
+        "B1": {
+            manifestUri: "https://a233ajwputlinear.a/akamaid/net/OTTC-sze.nitro/live/clients/dash/enc/pwvd:gn6v0pvu0v206f33956ebc4759c9b8144ge6:34e73e20dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "g:6:edee2db9d9:769de762fe47f3962": "bb5dg67df8d633b:f7693d53648cf492"
+                }
+            }
+        },
+        "B2": {
+            manifestUri: "https://a47ajwputlinear.a/akamaid/net/OTTC-sze.nitro/live/clients/dash/enc/7gcos4fj5c0pvu0v2068e3bf:7b5dd5341992de912c49:feg70dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    ":bge83g31684112d34783e32699:3b6g": ":cd43eg59b3fgbd41183c8f6d794cde2"
+                }
+            }
+        },
+        "B3": {
+            manifestUri: "https://a94ajwputlinear.a/akamaid/net/OTTC-sze.nitro/live/clients/dash/enc/hjhytl1mzb0pvu0v20eg86e998cdf5548c9geg456bf566224c0dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "5c314427d58d481b2fc:1:8d181e8337": "787f7894g3489:deg5gg1597497256fe"
+                }
+            }
+        },
+        "B4": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/mis.nitro/live/clients/dash/enc/xg9vtbh62f0pvu0v20ce4c1d425ggg5cc2bc57:4469g4de3e40dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "bf37956ce44149b:d1885b1:921183:5": "74bd773eef421dgc5dd7g:c54c452:7e"
+                }
+            }
+        },
+        "B5": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/mis.nitro/live/clients/dash/enc/g1rwlssb9k0pvu0v20g9gb28g198675g62bb5e6d811cf54fd50dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "7e2819c296d7d5e8c48711631d8dd:4d": "2bbdf16g69e9fefg:7:8ge63dc1:g552"
+                }
+            }
+        },
+        "B6": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/mis.nitro/live/clients/dash/enc/mtebtcwhmw0pvu0v20cc659b4737de5819bgcc:5b69e82edf:0dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "5f::4bb9d2g3:6g9c:5f9f:f7g7e1cgf": "97b2fe7f:7dbbc9fc211:gf641e3dg5g"
+                }
+            }
+        },
+        "B7": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/mis.nitro/live/clients/dash/enc/j3qdks5qf60pvu0v20:23f:ec67e86514c9b:bd1b82:221g470dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "f42b6b92dbgg6e18fb3522b682gd3f6:": ":7d6fg7:58:843bf845g:73859d2:83:"
+                }
+            }
+        },
+        "B8": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/mis.nitro/live/clients/dash/enc/hftexseodo0pvu0v208:f863g2fdde5f29c7b9:15b1cd12g3e0dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "71d1e:c52586f12ec5ggc:2fe668gcdd": "47ff51f69:59db26f4dbcb9e58c9g45c"
+                }
+            }
+        },
+        "MALIHA.UW": {
+            manifestUri: "https://bcdmyekbbbbbbbbnlrc7z5q7jf3{l/ott/live/dg/xx/bjw.vod/net/evc.nitro/live/clients/dash/enc/l1ev{hgfkh0pvu0v2081b61c2ceb:55739c9f8f77bc517:52:0dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "731f62c936:7586628b38bb536d63391": "3c:cb922f:d6bfbgd9bf2c82dedb5e7b"
+                }
+            }
+        },
+        "EB[O.MALIHA": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/evc.nitro/live/clients/dash/enc/zbtkrqsu8o0pvu0v209197eg89e4df58:f9f486258g83:53d70dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "54e2d4c36318gg49c33ddgf28e413478": "8c2g96g7f9216:584c225d27b36d93:b"
+                }
+            }
+        },
+        "EB[O2": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/evc.nitro/live/clients/dash/enc/cnofmp6d8b0pvu0v204df3ded569:g5729:433ce4828d88:680dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "55ee:de481c19b979fbe226gf95fdgef": "cgg2:bc1b62dg25f95949:c263:24ge1"
+                }
+            }
+        },
+        "EB[O3": {
+            manifestUri: "https://ott/live/dg/xx/bjw.vod/net/evc.nitro/live/clients/dash/enc/yol5n:coyu0pvu0v205dfe8c843:b65763c:cc1632fe49ce5e0dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "1fbc6b4g4f4c5cb6e53e51db41e28682": "g4g172efe:c81f92716:1e6913fdeb7e"
+                }
+            }
+        },
+        "EB[O4": {
+            manifestUri: "https://live/mm/xx/bjw.vod/net/OTTC-evc.nitro/live/clients/dash/enc/{z2ff6ttiq0pvu0v20cedggb7:gb4c5g4cc467:d:d84ff2d120dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "cbe9fggg799d1ecc4822f5b8225d33b4": "7cb911784c31887d1d961241e56f2:31"
+                }
+            }
+        },
+        "EB[O5": {
+            manifestUri: "https://live/mm/xx/bjw.vod/net/OTTC-evc.nitro/live/clients/dash/enc/vq8rqxdi:c0pvu0v20b7e6e2b2398c59:4c96:d3e7ddg3d76e0dfod/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "e38215e538f5g98f86c2:4:6b:g98:7c": "8346:4d81f3e5d59738654:9f91279g9"
+                }
+            }
+        },
+        "[JGGP": {
+            manifestUri: "https://nbh15/uwy/qse/uw/pejep/om0xi8g565d57ux377228995`.2:8392:4270QMUW09703350433235267104332352671/mpd",
+            drmConfig: {
+                clearKeys: {
+                    ":113fd9d4ecd66d6cddede7982e91ge1": "81::436234cbf8921ec619838cc1cd8e"
+                }
+            }
+        },
+        "BSFOB2Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob2`o0efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "d54d94bdeb716:4e9f4718fge6121e8e": "637g5b871fg63bc96167gcd21fb38695",
+                    "8231:1bbf3176d32:62c281cd4113441": "b:8885f5286c91316d4dg215f:685319"
+                }
+            }
+        },
+        "BSFOB3Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob30efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "d6f6bd2c4dd26gf8:1g2cd:7646gf43:": "4efgf6:d4918:ddbe36b547311be4ce8",
+                    "c3g33g6e8db46:21b84gcbcd635:65ef": "e98e19gcf7616be81::c9d369g4:7e26",
+                    "e367c514fgdd6d4ec812gd7:7996f213": "e57f5326f38:c335f:e3b883ec:d85b2"
+                }
+            }
+        },
+        "BSFOB4Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob40efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "4cfeg5b9:77:6:69:18f1:952761:1g1": "b69428ggeeg429g2651g42g78e:6c6gc",
+                    "36d4eg4313116dd:9d588113:6cf6:db": "184g6b4:e95ee25b:efce2b83cc2g166",
+                    "ddfcfgdcb1b4657cb45e4gd698762819": "29g3c3138df37978d34ede8g68gbb356"
+                }
+            }
+        },
+        "BSFOB5Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob50efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "88df7:49d892637f:::c799::3g38875": "cg2289952881gecb85g973:g1g17e3d1",
+                    "79de772ecd9463geb111d643951g7451": "1366gc731g5g818fb8cb1:1169829417",
+                    "9:e2ed657:3f6c5gc6::6gd1:64cg6cg": "42c9:64bc71c:1gfgd:4e:ce2c917gcd"
+                }
+            }
+        },
+        "BSFOB6Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob60efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "f584fd6e:7g56b:g:b33fc776c6c2fb:": "bdf65df26c7:e35:c114:6d:f7c96c:1",
+                    "45b81:ccfbd163g3:4d889d188193:ge": "3c912gef2be594:e5191e7fd7c1fd5df",
+                    "29e4gcb19g4263d49g2526232:gb:8:3": "89c1d6c:72462f593cf92398577fdc19"
+                }
+            }
+        },
+        "BSFOB7Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob70efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    "c4c71f8::9:b6c38::gb4b34:5c985:g": "b36e32f444ebe4e242g237c8c68841cf",
+                    "cge9gg15b4736gdfb9446d:6865127:8": "87:e72b3e7ge8141b6199eg3f81d3765",
+                    "6b97f53d69dg6e119657972d1g1gc33b": "78c2283b16cdc49b:2b415e81:9df8g6"
+                }
+            }
+        },
+        "BSFOB:Q": {
+            manifestUri: "https://cqdeonboqspe/ofyuuw/iu/is0cql.uw0bsfob:0efgbvmu0joefy/mpd",
+            drmConfig: {
+                clearKeys: {
+                    ":2b67g6bbc5d67dc99gcg898298bdbgf": "111192718:b6fd5g1:4f4385ceb37g3b",
+                    "b3gg483b32c46764b996:3bcgfd4g:b8": "e6cd36199e2geb2395:bbe:1827ef861",
+                    "8fdge23fc37369d492bgbebd27bd9gd:": "c5g462644e744bcg87deb58gf86e68:c"
+                }
+            }
+        }
+    };
+
+    // Function to initialize the video player
+    async function init(){
+        const id = getQueryParameter("id");
+        const config = videoConfigs[id];
+        
+        if(!config){
+            console.error("No valid video configuration found for the provided id.");
+            return;
+        }
+
+        const video = document.getElementById("video");
+        const ui = video["ui"];
+
+        ui.configure({
+            seekBarColors: {
+                base: "rgb(255, 255, 255, 0.3)",
+                buffered: "rgb(255, 255, 255, 0.5)",
+                played: "rgb(255, 255, 255)"
+            }
+        });
+
+        const controls = ui.getControls();
+        const player = controls.getPlayer();
+
+        // Apply DRM configuration to the player
+        player.configure({
+            drm: config.drmConfig
+        });
+
+        try{
+            await player.load(config.manifestUri);
+            // Mute the video to allow autoplay
+            video.muted = true;
+            await video.play();
+        }catch(errors){
+            console.error("Error loading manifest or autoplay failed:", errors);
+        }
+    }
+
+    // Replace jQuery with vanilla JavaScript for modifying button text
+    document.querySelectorAll(".shaka.overflow.menu.button").forEach(button => {
+        button.textContent = "settings";
+    });
+    document.querySelectorAll(".shaka.back.to.overflow.button .material.icons.round").forEach(icon => {
+        icon.textContent = "arrow_back_ios_new";
+    });
+
+    document.addEventListener("shaka.ui.loaded", init);
+</script>
+
+<script>
+    // Display a pop-up message when the page starts
+    document.write('<b href="https://t.me/vivosports" target="_blank"><span style="position:absolute;z-index:999;top:7px;left:6px;height:41px;width:100px;color:rgb(255,255,255);border:3px solid rgb(255,255,255);padding:2px 1px;border-radius:3px;text-align:center">Join us</span></b>');
+</script>
+</body>
+</html>
