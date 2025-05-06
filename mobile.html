@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HLS m3u8 Player</title>
+  <style>
+    body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #111; }
+    video { width: 80%; max-width: 800px; border: 4px solid #00ff99; border-radius: 12px; }
+  </style>
+</head>
+<body>
+
+  <video id="video" controls autoplay></video>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const video = document.getElementById('video');
+    const videoSrc = 'https://top1-cdnnew.newkso.ru/top1-cdn/WGVkNwnbxY/mono.m3u8'; // Replace with your .m3u8 URL
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play();
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      // Native support (Safari)
+      video.src = videoSrc;
+      video.addEventListener('loadedmetadata', () => {
+        video.play();
+      });
+    } else {
+      alert('HLS is not supported in this browser');
+    }
+  </script>
+
+</body>
+</html>
